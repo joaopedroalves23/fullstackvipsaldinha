@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/********** Contato **********/
+
+section.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+section.contact,
+section.contact form,
+section.contact form input,
+section.contact form textarea {
+  width: 100%;
+}
+
+section.contact form {
+  max-width: 700px;
+}
+
+/* fieldset */
+
+section.contact form fieldset {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+section.contact form fieldset legend {
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+  grid-column: 1 / -1;
+}
+
+/* grupo de campos */
+section.contact form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+section.contact form .input-group:has(textarea),
+section.contact form .input-group:has(input[type="submit"]) {
+  grid-column: 1 / -1;
+}
+/* labels */
+section.contact form label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+/* Inputs e Textarea */
+section.contact form input[type="text"],
+section.contact form input[type="tel"],
+section.contact form textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+section.contact form input[type="text"]:focus,
+section.contact form input[type="tel"]:focus,
+section.contact form textarea:focus {
+  border-color: #888;
+}
+
+/* Textarea */
+section.contact form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* Botão de envio */
+section.contact form input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+
+section.contact form input[type="submit"]:hover {
+  opacity: 0.85;
+}
+
+/* Inputs e Textarea */
+section.contact form input[type="text"],
+section.contact form input[type="email"],
+section.contact form input[type="tel"],
+section.contact form textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px  dotted #e49797;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+section.contact form input[type="text"]:focus,
+section.contact form input[type="email"]:focus,
+section.contact form input[type="tel"]:focus,
+section.contact form textarea:focus {
+  border-color: #888;
+}
+
+/* Textarea */
+section.contact form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* Botão de envio */
+section.contact form input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+
+section.contact form input[type="submit"]:hover {
+  opacity: 0.85;
+}

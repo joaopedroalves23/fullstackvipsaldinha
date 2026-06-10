@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="entre em contato conosco" />
+  <meta name="keywords" content="roupas,estilo,barato sobre, brecho" />
+  <meta name="author" content="João pedro Saldinha" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sobre-brechodoxuru</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- Icone FonteAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="../src/css/style.css" />
+  <!-- CSS contato -->
+  <link rel="stylesheet" href="../src/css/contact.css" />
+</head>
+
+<body>
+  <header id="header">
+    <div class="container">
+      <figure class="logo">
+        <a href="../index.html">
+          <img src="../assets/img/logo.png" style="width: 100px; height: auto; border-radius: 100%"
+            alt="Logo do site" />
+        </a>
+        <figcaption>Brecho do Xuru</figcaption>
+      </figure>
+      <nav class="navigation">
+        <div class="links">
+          <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="./sobre.html">Sobre</a></li>
+            <li><a href="./contato.html">Contato</a></li>
+            <li>
+              <a href="https://wa.me/5521990089855?text=Ol%C3%A1%2C%20estou%20interessado!" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+                Entre em contato
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section class="title">
+        <h1>Brecho do Xuru</h1>
+        <h2>Somos um Brechó com foco em roupas streetwear, y2k</h2>
+      </section>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <section class="contact">
+        <form action="">
+          <fieldset>
+            <legend>Dados pessoais</legend>
+
+            <div class="input-group">
+              <label for="name">Nome</label>
+              <input type="text" name="name" id="name" placeholder="Digite seu nome completo" required />
+            </div>
+
+            <div class="input-group">
+              <label for="lastname">Sobrenome</label>
+              <input type="text" name="lastname" id="lastname" placeholder="Digite seu nome completo" required />
+            </div>
+
+            <div class="input-group">
+              <label for="email">E-mail: *</label>
+              <input type="email" id="email" name="email" placeholder="exemplo@dominio.com" required />
+            </div>
+
+            <div class="input-group">
+              <label for="whatsapp">Digite seu número</label>
+              <input type="tell" name="whatsapp" id="whatsapp" placeholder="Digite seu número" required />
+            </div>
+
+            <div class="input-group">
+              <label for="message">Mensagem:</label>
+              <textarea name="message" id="message"></textarea>
+            </div>
+
+            <div class="input-group">
+              <input type="submit" id="btn-submit" value="Enviar" />
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <p>&copy; 2026 Brechó do xuru - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function maskPhone(value) {
+      const digits = value.replace(/\D/g, "").slice(0, 11);
+
+      if (digits.length <= 2) return digits.replace(/(\d{1,2})/, "($1");
+      if (digits.length <= 3)
+        return digits.replace(/(\d{2})(\d{1})/, "($1) $2");
+      if (digits.length <= 7)
+        return digits.replace(/(\d{2})(\d{1})(\d{1,4})/, "($1) $2 $3");
+      return digits.replace(/(\d{2})(\d{1})(\d{4})(\d{1,4})/, "($1) $2 $3-$4");
+    }
+
+    const PHONE_REGEX = /^\(\d{2}\) 9 \d{4}-\d{4}$/;
+    const PHONE_LENGTH = 16;
+
+    const whatsappInput = document.getElementById("whatsapp");
+    whatsappInput.addEventListener("input", e => {
+      e.target.value = maskPhone(e.target.value);
+
+      const isComplete = e.target.value.length === PHONE_LENGTH;
+      const isValid = PHONE_REGEX.test(e.target.value);
+
+      e.target.setCustomValidity(
+        isComplete && !isValid
+          ? "Número inválido. Celulares brasileiros começam com 9 após o DDD. Ex: (11) 9 8765-4321"
+          : "",
+      );
+    });
+
+    const contactForm = document.getElementById("contact-form");
+
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const lastname = document.getElementById("lastname").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const content = [
+        "Dados do Formulario de Contato",
+        "------------------------------",
+        "Nome: " + name,
+        "Sobrenome: " + lastname,
+        "WhatsApp: " + whatsapp,
+        "Mensagem: " + message,
+      ].join("\n");
+
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const fileUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = fileUrl;
+      link.download = "contato.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(fileUrl);
+      contactForm.reset();
+    });
+  </script>
+</body>
+
+</html>
