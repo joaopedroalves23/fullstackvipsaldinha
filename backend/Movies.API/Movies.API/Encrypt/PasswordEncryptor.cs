@@ -1,19 +1,35 @@
 ﻿using System.Security.Cryptography;
+using System.Text;
 
-namespace Movies.API.Encrypt
+namespace Movies.API.Encrypt;
+
+public class PasswordEncryptor
 {
-    public class PasswordEncryptor
+    public static string EncryptPassword(string password)
     {
-        public static string EncryptPassword(string password)
+
+        if (string.IsNullOrEmpty(password))
         {
-            // ESSE CODIGO ABAIXO VAMOS APAGAR NA PRÓXIMA AULA! ESTA AÍ SOMENTE PARA REMOVER O ERRO
-            byte[] hashBytes = new byte[48];
-            return Convert.ToBase64String(hashBytes);
+            throw new ArgumentNullException(nameof(password), "Password cannot be null or empty.");
         }
 
-        public static bool VerifyPassword(string password, string hashedPassword)
-        {   
-            return true;
+        using (SHA256 sha256 = SHA256.Create ())
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            byte[] hash = sha256.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
+
+    }
+
+    public static bool VerifyPassword(string password, string hashedPassword)
+    {
+        if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(hashedPassword))
+        {
+            return false;
+        }
+
+        string encryptedInput = EncryptPassword(password);
+        return encryptedInput == hashedPassword;
     }
 }

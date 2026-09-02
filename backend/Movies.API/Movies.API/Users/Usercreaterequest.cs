@@ -1,6 +1,8 @@
 ﻿namespace Movies.API.Users
 {
-    public class Usercreaterequest
+    public class UserCreateRequest
     {
+        public string username { get; set; }
+        public string password { get; set; }
     }
 }
