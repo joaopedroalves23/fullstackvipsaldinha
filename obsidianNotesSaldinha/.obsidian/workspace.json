@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "aulasCurso/gitGithub.md",
-                "mode": "preview",
+                "file": "aulasCurso/00_indice.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gitGithub"
+              "title": "00_indice"
             }
           }
         ]
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "954c4914ab918d53",
@@ -100,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "aulasCurso/gitGithub.md",
+                "file": "aulasCurso/00_indice.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "aulasCurso/gitGithub.md",
+                "file": "aulasCurso/00_indice.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -162,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "aulasCurso/gitGithub.md",
+                "file": "aulasCurso/00_indice.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -191,7 +190,9 @@
   },
   "active": "b1846dc58b2c41f3",
   "lastOpenFiles": [
-    "aulasCurso/gitGithub.md",
+    "aulasCurso/01_gitGithub.md",
+    "aulasCurso/00_indice.md",
+    "aulasCurso/02_bancoDeDados.md",
     "Bem-vindo.md",
     "aulasCurso"
   ]

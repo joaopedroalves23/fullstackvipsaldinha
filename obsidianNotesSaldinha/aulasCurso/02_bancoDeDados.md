@@ -1,0 +1,3 @@
+create
+select
+insert
