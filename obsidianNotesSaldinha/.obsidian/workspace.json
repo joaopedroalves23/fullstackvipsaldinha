@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "aulasCurso/00_indice.md",
+                "file": "aulasCurso/01_gitGithub.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00_indice"
+              "title": "01_gitGithub"
             }
           }
         ]
@@ -190,8 +190,8 @@
   },
   "active": "b1846dc58b2c41f3",
   "lastOpenFiles": [
-    "aulasCurso/01_gitGithub.md",
     "aulasCurso/00_indice.md",
+    "aulasCurso/01_gitGithub.md",
     "aulasCurso/02_bancoDeDados.md",
     "Bem-vindo.md",
     "aulasCurso"

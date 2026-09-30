@@ -1,34 +1,49 @@
-## Comandos 
+## 🖥️ PASSO A PASSO DO GIT — TERMINAL
 
-```sh
-# Configurando
-git config --global user.name "joaopedroalves23"
-git config --global user.email "joaopedroalves230807@gmail.com"
+Execute os comandos dentro da pasta do repositório. **Atenção: só faça o `git clone` se o aluno ainda não tiver clonado o projeto. Se a pasta do projeto já existir no computador, não repita o clone; apenas entre nela com `cd` e continue.**
+
+>[!IMPORTANT]
+> - LIMPAR GIT NA AREA DE TRABALHO
+> - ADD GIT IGNORE DA TECNOLOGIA EM QUESTÃO
+
+```shell
+git clone https://github.com/nomedeusuariodoaluno/nomedorepositorio.git
+cd nomedorepositorio
 ```
 
-```sh
-# Trazer alterações do servidor remoto(github)
+### Configuração da identidade
+
+```shell
+git config --global user.name "nomedeusuariodoaluno"
+git config --global user.email "nomedeusuariodoaluno@email.com"
+```
+
+Se outra pessoa usa Git no mesmo computador, use `--local` dentro desta pasta:
+
+```shell
+git config --local user.name "nomedeusuariodoaluno"
+git config --local user.email "nomedeusuariodoaluno@email.com"
+```
+
+### Publicar a alteração do README
+
+Depois de editar ou criar o `README.md` no VS Code, execute:
+
+```shell
 git pull
-```
-
-```sh
-# Verificar se tem alteração
-git status
-```
-
-```sh
-# Faz a alteração
 git add .
-```
-
-```sh
-# Adicionar firmar a alteração e nomear com as mensagens especificas do que foi feito na alteração
-git commit -m "mensagem"
-```
-
-```sh
-# Enviar para o github
+git commit -m "Update my project"
 git push
 ```
 
-- [[00_indice | Voltar]] 
+Na primeira publicação, configure o remoto uma única vez, somente se este repositório ainda não tiver um remoto configurado:
+
+```shell
+git branch -M main
+git remote add origin https://github.com/nomedeusuariodoaluno/nomedorepositorio.git
+git push -u origin main
+```
+
+A configuração `--local` só é necessária se outra pessoa também usa Git no PC; para uso individual, `--global` basta.
+
+
