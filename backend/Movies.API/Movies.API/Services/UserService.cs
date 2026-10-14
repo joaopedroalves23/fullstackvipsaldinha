@@ -4,24 +4,19 @@ using Movies.API.Encrypt;
 using Movies.API.Interfaces.Repository;
 using Movies.API.Models;
 using Movies.API.Request.Users;
+using Movies.API.Users;
 
 namespace Movies.API.Services;
 
 public class UserService : IRepositoryUser
 {
-    public UserService()
-    {
-
-    }
-
     public bool Create(UserCreateRequest request)
     {
         using var connection = new DataContext();
-
-        var user = new User(request.Username, PasswordEncryptor.EncryptPassword(request.Password));
-
         try
         {
+            var hash = PasswordEncryptor.EncryptPassword(request.Password);
+            var user = new User(request.Username, hash);
             connection.Users.Add(user);
             connection.SaveChanges();
             return true;
@@ -36,15 +31,9 @@ public class UserService : IRepositoryUser
     public User? GetById(int id)
     {
         using var connection = new DataContext();
-
         try
         {
-            var user = connection.Users.AsNoTracking().FirstOrDefault(x => x.Id == id);
-
-            if (user is null)
-                return null;
-
-            return user;
+            return connection.Users.AsNoTracking().FirstOrDefault(u => u.Id == id);
         }
         catch (Exception ex)
         {
@@ -53,18 +42,16 @@ public class UserService : IRepositoryUser
         }
     }
 
-    public bool Delete(int id)
+    public bool Update(int id, UserUpdateRequest request)
     {
         using var connection = new DataContext();
-
         try
         {
-            var user = connection.Users.FirstOrDefault(x => x.Id == id);
+            var user = connection.Users.FirstOrDefault(u => u.Id == id);
+            if (user == null) return false;
 
-            if (user is null)
-                return false;
-
-            connection.Users.Remove(user);
+            user.Username = request.Username;
+            user.Password = PasswordEncryptor.EncryptPassword(request.Password);
             connection.SaveChanges();
             return true;
         }
@@ -74,20 +61,16 @@ public class UserService : IRepositoryUser
             return false;
         }
     }
-    public bool Update(int id, UserUpdateRequest request)
+
+    public bool Delete(int id)
     {
         using var connection = new DataContext();
-
         try
         {
-            var user = connection.Users.FirstOrDefault(x => x.Id == id);
-            if (user is null)
-                return false;
+            var user = connection.Users.FirstOrDefault(u => u.Id == id);
+            if (user == null) return false;
 
-            user.Username = request.Username;
-            user.Password = PasswordEncryptor.EncryptPassword(request.Password);
-
-            connection.Users.Update(user);
+            connection.Users.Remove(user);
             connection.SaveChanges();
             return true;
         }
@@ -101,6 +84,14 @@ public class UserService : IRepositoryUser
     public IEnumerable<User> GetAll()
     {
         using var connection = new DataContext();
-        return connection.Users.AsNoTracking().ToList();
+        try
+        {
+            return connection.Users.AsNoTracking().ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return new List<User>();
+        }
     }
 }

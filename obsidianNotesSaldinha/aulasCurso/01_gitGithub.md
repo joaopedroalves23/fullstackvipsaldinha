@@ -14,8 +14,8 @@ cd nomedorepositorio
 ### Configuração da identidade
 
 ```shell
-git config --global user.name "nomedeusuariodoaluno"
-git config --global user.email "nomedeusuariodoaluno@email.com"
+git config --global user.name "alunoemmanuelprogjogosseg"
+git config --global user.email "alunoemmanuelprogjogosseg16h@cursosposrio.com.br"
 ```
 
 Se outra pessoa usa Git no mesmo computador, use `--local` dentro desta pasta:
@@ -24,8 +24,8 @@ Se outra pessoa usa Git no mesmo computador, use `--local` dentro desta pasta:
 > NO CURSO É ESSE AQUI DE BAIXO! NUNCA, JAMAIS O GLOBAL
 
 ```shell
-git config --local user.name "nomedeusuariodoaluno"
-git config --local user.email "nomedeusuariodoaluno@email.com"
+git config --local user.name "alunoemmanuelprogjogosseg"
+git config --local user.email "alunoemmanuelprogjogosseg16h@cursosposrio.com.br"
 ```
 
 ### Publicar a alteração do README

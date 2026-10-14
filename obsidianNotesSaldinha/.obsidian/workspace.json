@@ -11,10 +11,14 @@
             "id": "3f2b6917144469c0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "aulasCurso/01_gitGithub.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "01_gitGithub"
             }
           }
         ]
@@ -79,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 384.5
   },
   "right": {
     "id": "954c4914ab918d53",
@@ -95,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "aulasCurso/00_indice.md",
+                "file": "aulasCurso/01_gitGithub.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -170,8 +174,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,11 +187,13 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "3f2b6917144469c0",
+  "active": "5981c12f212da711",
   "lastOpenFiles": [
-    "aulasCurso/01_gitGithub.md",
     "aulasCurso/02_bancoDeDados.md",
     "aulasCurso/00_indice.md",
+    "Link 1.md",
+    "index.md",
+    "aulasCurso/01_gitGithub.md",
     "Bem-vindo.md",
     "aulasCurso"
   ]

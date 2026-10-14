@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Movies.API.Request.Users;
 using Movies.API.Services;
+using Movies.API.Users;
 
 namespace Movies.API.Controllers;
 

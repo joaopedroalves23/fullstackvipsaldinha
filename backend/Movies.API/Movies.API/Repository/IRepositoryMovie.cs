@@ -1,5 +1,5 @@
 ﻿using Movies.API.Models;
-using Movies.API.Request.Movies;
+using Movies.API.Request;
 
 namespace Movies.API.Interfaces.Repository;
 

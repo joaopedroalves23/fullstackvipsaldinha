@@ -1,67 +1,45 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Movies.API.Request;
 using Movies.API.Request.Movies;
+using Movies.API.Services;
 
 namespace Movies.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class MovieController : ControllerBase
 {
-    [HttpPost]
-    public IActionResult Create(MovieCreateRequest request)
-    {
-        var movieService = new Services.MovieService();
-        var isCreated = movieService.Create(request);
-        if (!isCreated)
-            return BadRequest("Error to create movie!");
+    private readonly MovieService _service = new();
 
-        return Ok("Movie created with success!");
+    [HttpPost]
+    public IActionResult Create([FromBody] MovieCreateRequest request)
+    {
+        return _service.Create(request)
+            ? Ok("Movie created with success!")
+            : BadRequest("Failed to create movie");
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var movieService = new Services.MovieService();
-        var movie = movieService.GetById(id);
-
-        if (movie is null)
-            return NotFound("Movie not found!");
-
-        return Ok(movie);
+        var movie = _service.GetById(id);
+        return movie == null ? NotFound() : Ok(movie);
     }
 
-    [HttpDelete("{id:int}")]
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, [FromBody] MovieUpdateRequest request)
+    {
+        return _service.Update(id, request)
+            ? Ok("Updated!")
+            : BadRequest("Failed to update");
+    }
+
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        var movieService = new Services.MovieService();
-
-        var isDeleted = movieService.Delete(id);
-
-        if (!isDeleted)
-            return BadRequest("Error to delete movie!");
-
-        return Ok("Movie deleted with success!");
-    }
-
-    [HttpPut("{id:int}")]
-    public IActionResult Update(int id, MovieUpdateRequest request)
-    {
-        var movieService = new Services.MovieService();
-        var isUpdated = movieService.Update(id, request);
-
-        if (!isUpdated)
-            return BadRequest("Error to update movie!");
-
-        return Ok("Movie updated with success!");
+        return _service.Delete(id) ? Ok("Deleted!") : BadRequest("Failed to delete");
     }
 
     [HttpGet("get-all")]
-    public IActionResult GetAll()
-    {
-        var movieService = new Services.MovieService();
-        var movies = movieService.GetAll();
-        return Ok(movies);
-    }
+    public IActionResult GetAll() => Ok(_service.GetAll());
 }
