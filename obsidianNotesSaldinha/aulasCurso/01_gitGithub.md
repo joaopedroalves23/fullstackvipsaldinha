@@ -20,6 +20,9 @@ git config --global user.email "nomedeusuariodoaluno@email.com"
 
 Se outra pessoa usa Git no mesmo computador, use `--local` dentro desta pasta:
 
+> [!DANGER]
+> NO CURSO É ESSE AQUI DE BAIXO! NUNCA, JAMAIS O GLOBAL
+
 ```shell
 git config --local user.name "nomedeusuariodoaluno"
 git config --local user.email "nomedeusuariodoaluno@email.com"
@@ -32,7 +35,13 @@ Depois de editar ou criar o `README.md` no VS Code, execute:
 ```shell
 git pull
 git add .
-git commit -m "Update my project"
+```
+
+```shell
+git commit -m "Mensagem: "
+```
+
+```shell
 git push
 ```
 
