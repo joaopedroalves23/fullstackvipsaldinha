@@ -1,4 +1,4 @@
-﻿namespace Movies.API.Request
+﻿namespace Movies.API.Request.Login
 {
     public class AuthRequest
     {

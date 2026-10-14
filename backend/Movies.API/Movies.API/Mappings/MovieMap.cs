@@ -34,4 +34,3 @@ public class MovieMap : IEntityTypeConfiguration<Movie>
             .HasColumnName("overview");
     }
 }
-}

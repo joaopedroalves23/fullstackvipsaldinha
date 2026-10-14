@@ -1,6 +1,6 @@
-﻿namespace Movies.API.Request
+﻿namespace Movies.API.Request.Movies
 {
-    public class MovieCreateRequest
+    public class MovieUpdateRequest
     {
         public string Title { get; set; } = string.Empty;
         public string PosterUrl { get; set; } = string.Empty;
